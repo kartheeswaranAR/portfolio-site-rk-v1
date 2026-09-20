@@ -1,0 +1,363 @@
+/* ==========================================================================
+   Portfolio Design System & Aesthetic Architecture
+   Theme: "Graphite & Signal Green" (Terminal / Telemetry Dark Mode)
+   Developer: Kartheeswaran Rajasekaran
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Design Tokens & CSS Custom Properties
+   -------------------------------------------------------------------------- */
+:root {
+  /* Color Palette */
+  --bg-primary: #0d1117;          /* Slate Graphite */
+  --bg-surface: #161b22;          /* Panel & Card Surface */
+  --border-color: #30363d;        /* Subtle Border */
+  --border-hover: #444c56;        /* Card Hover Border */
+  --text-primary: #e6edf3;        /* Primary Foreground Text */
+  --text-muted: #8b949e;          /* Secondary Muted Text */
+  --accent-green: #2ea043;        /* Signal / Telemetry Green */
+  --accent-pulse-glow: rgba(46, 160, 67, 0.4);
+  --link-cyan: #58a6ff;           /* Terminal Cyan Link */
+
+  /* Typography Stacks */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & Base Styles
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  padding: 0 1.5rem;
+}
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 4rem 0;
+}
+
+/* --------------------------------------------------------------------------
+   3. Typography & Links
+   -------------------------------------------------------------------------- */
+h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.bio {
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin-bottom: 1.75rem;
+  line-height: 1.7;
+}
+
+a {
+  color: var(--link-cyan);
+  text-decoration: none;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   4. Status Badge & Telemetry Pulse Dot
+   -------------------------------------------------------------------------- */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background-color: rgba(46, 160, 67, 0.08);
+  border: 1px solid rgba(46, 160, 67, 0.3);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  margin-bottom: 2rem;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-green);
+  border-radius: 50%;
+  position: relative;
+}
+
+.pulse-dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background-color: var(--accent-green);
+  opacity: 0.75;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. Engineering Quote Callout
+   -------------------------------------------------------------------------- */
+.quote-box {
+  background-color: var(--bg-surface);
+  border-left: 3px solid var(--accent-green);
+  border-top: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  border-radius: 0 6px 6px 0;
+  padding: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.quote-box blockquote {
+  font-style: italic;
+  color: var(--text-primary);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.quote-box figcaption {
+  font-family: var(--font-mono);
+  font-size: 0.775rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   6. Quick Navigation & Contact Links
+   -------------------------------------------------------------------------- */
+.quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  margin-bottom: 3.5rem;
+}
+
+.quick-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* --------------------------------------------------------------------------
+   7. Sections & Section Headers
+   -------------------------------------------------------------------------- */
+section {
+  margin-bottom: 3.5rem;
+}
+
+.section-title {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: var(--border-color);
+}
+
+/* --------------------------------------------------------------------------
+   8. Cards & Panel Component
+   -------------------------------------------------------------------------- */
+.card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  transition: border-color 0.2s ease;
+}
+
+.card:hover {
+  border-color: var(--border-hover);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.card-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.meta-tag {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.card-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.card-body {
+  color: var(--text-primary);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.card-body ul {
+  list-style-type: none;
+  margin-top: 0.5rem;
+}
+
+.card-body li {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 0.4rem;
+  color: var(--text-muted);
+}
+
+.card-body li::before {
+  content: "›";
+  position: absolute;
+  left: 0;
+  color: var(--accent-green);
+  font-family: var(--font-mono);
+  font-weight: bold;
+}
+
+.card-body li span {
+  color: var(--text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   9. Tech Tags
+   -------------------------------------------------------------------------- */
+.tag-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  background-color: rgba(110, 118, 129, 0.1);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   10. Education & Publication Grid
+   -------------------------------------------------------------------------- */
+.edu-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.pub-journal {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent-green);
+  margin-top: 0.35rem;
+}
+
+/* --------------------------------------------------------------------------
+   11. Footer
+   -------------------------------------------------------------------------- */
+footer {
+  border-top: 1px solid var(--border-color);
+  padding-top: 2rem;
+  margin-top: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-engine {
+  color: var(--accent-green);
+}
+
+/* --------------------------------------------------------------------------
+   12. Responsive Breakpoints
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  .container {
+    padding: 2.5rem 0;
+  }
+  h1 {
+    font-size: 1.75rem;
+  }
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+  }
+  footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
