@@ -5,7 +5,7 @@ import { PROFILE_DATA } from '@/data/portfolioData';
 
 const Hero = () => {
   return (
-    <section id="hero" className="relative min-h-[90vh] w-full flex items-center justify-center overflow-hidden pt-28 pb-16">
+    <section id="hero" className="relative min-h-screen min-h-[100dvh] w-full flex items-center justify-center overflow-hidden pt-24 pb-16">
       <div className="container mx-auto px-6 z-10 relative">
         <div className="max-w-4xl mx-auto text-left px-4">
           
