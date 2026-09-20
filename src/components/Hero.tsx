@@ -80,7 +80,7 @@ const Hero = () => {
               rel="noopener noreferrer" 
               className="text-primary hover:underline flex items-center gap-1.5 font-semibold"
             >
-              <FileText className="w-3.5 h-3.5 text-primary" /> Resume (PDF)
+              <FileText className="w-3.5 h-3.5 text-primary" /> Resume
             </a>
             <a 
               href={`mailto:${PROFILE_DATA.email}`} 
