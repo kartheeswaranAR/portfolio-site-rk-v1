@@ -1,16 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import ProjectCard, { Project } from './ProjectCard';
-import { Button } from "@/components/ui/button";
-import { Link } from 'react-router-dom';
-import GlowingEffectDemo from "./ui/glowing-effect-demo";
-
+import ProjectCard from './ProjectCard';
 import { PROJECTS_DATA } from '@/data/portfolioData';
 
 const Projects = () => {
   return (
     <section id="projects" className="section-container relative">
-      <h2 className="section-title mb-8">Featured Projects & Architecture</h2>
+      <h2 className="section-title">Featured Projects &amp; Architecture</h2>
       
       {/* Project Description */}
       <motion.div 
@@ -20,7 +16,7 @@ const Projects = () => {
         transition={{ duration: 0.5 }}
         viewport={{ once: true }}
       >
-        <p className="text-sm sm:text-base text-[#8b949e] leading-relaxed">
+        <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
           Production systems bridging real-time hardware telemetry, protocol-level robotics integration, and high-concurrency enterprise cloud architectures.
         </p>
       </motion.div>

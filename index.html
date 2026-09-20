@@ -11,14 +11,30 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="alternate icon" type="image/x-icon" href="/favicon.ico" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
+
+  <!-- Zero-FOUC Theme Detection Script -->
+  <script>
+    (function () {
+      try {
+        var theme = localStorage.getItem('portfolio-theme');
+        var supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (theme === 'dark' || (theme === 'system' && supportDarkMode)) {
+          document.documentElement.classList.add('dark');
+          document.documentElement.style.colorScheme = 'dark';
+        } else {
+          document.documentElement.classList.remove('dark');
+          document.documentElement.style.colorScheme = 'light';
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 
 <body>

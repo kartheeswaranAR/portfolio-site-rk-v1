@@ -1,143 +1,87 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Mail, Github, Linkedin, Send, Download, Eye, FileText, X, Code2, MessageSquare, User, MessageCircle } from 'lucide-react';
-import AnimatedCard from './AnimatedCard';
-import { Card, CardHeader, CardContent, CardFooter, CardTitle } from '@/components/ui/card';
-
-const contactMethods = [
-  {
-    icon: Mail,
-    label: 'Email',
-    value: 'kartheeswaran.dev@outlook.com',
-    href: 'mailto:kartheeswaran.dev@outlook.com',
-    bg: 'bg-blue-700',
-    iconColor: 'text-white',
-  },
-  {
-    icon: Github,
-    label: 'GitHub',
-    value: 'github.com/kartheeswaranAR',
-    href: 'https://github.com/kartheeswaranAR',
-    bg: 'bg-gray-700',
-    iconColor: 'text-white',
-  },
-  {
-    icon: Linkedin,
-    label: 'LinkedIn',
-    value: 'linkedin.com/in/kartheeswaranr',
-    href: 'https://www.linkedin.com/in/kartheeswaranr/',
-    bg: 'bg-blue-800',
-    iconColor: 'text-white',
-  },
-];
-
-// LeetCode SVG
-const LeetCodeIcon = () => (
-  <svg width="32" height="32" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M35.5 36.5L14 25.5L35.5 14.5" stroke="#FFA116" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M14 25.5H35.5" stroke="#000" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
-
-const codingPlatforms = [
-  {
-    icon: Github,
-    label: 'GitHub',
-    href: 'https://github.com/kartheeswaranAR',
-    bg: 'bg-white',
-    iconColor: '',
-  },
-  {
-    icon: Linkedin,
-    label: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/kartheeswaranr/',
-    bg: 'bg-white',
-    iconColor: '',
-  },
-];
+import { Mail, Github, Linkedin, Send } from 'lucide-react';
+import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card';
+import { PROFILE_DATA } from '@/data/portfolioData';
 
 const DeveloperStats = () => (
-  <Card className="bg-[#161b22]/75 backdrop-blur-md border-[#30363d] rounded-xl transition-all duration-300 overflow-hidden h-full flex flex-col justify-between shadow-xl p-2">
+  <Card className="bg-card/85 backdrop-blur-md border-border rounded-xl transition-all duration-300 overflow-hidden h-full flex flex-col justify-between shadow-md p-2">
     <CardHeader className="pb-3">
       <div className="flex items-center justify-between">
-        <CardTitle className="text-xl sm:text-2xl font-bold text-[#e6edf3]">Systems Overview</CardTitle>
-        <span className="px-2.5 py-1 rounded-full bg-[#2ea043]/15 border border-[#2ea043]/40 text-[#2ea043] font-mono text-[10px] uppercase font-semibold">
+        <CardTitle className="text-xl sm:text-2xl font-bold text-foreground">Systems Overview</CardTitle>
+        <span className="px-2.5 py-1 rounded-full bg-primary/15 border border-primary/40 text-primary font-mono text-[10px] uppercase font-semibold">
           Verified Impact
         </span>
       </div>
-      <p className="text-[#8b949e] text-xs font-mono">Specialized benchmarks &amp; key engineering milestones</p>
+      <p className="text-muted-foreground text-xs font-mono">Specialized benchmarks &amp; key engineering milestones</p>
     </CardHeader>
     
     <CardContent className="space-y-6">
       {/* Specialization Spotlight Box */}
-      <div className="p-4 rounded-xl bg-[#0d1117]/90 border border-[#2ea043]/30 shadow-md">
-        <div className="flex items-center gap-2 mb-1.5 font-mono text-xs font-bold text-[#2ea043]">
+      <div className="p-4 rounded-xl bg-background/85 border border-primary/30 shadow-sm">
+        <div className="flex items-center gap-2 mb-1.5 font-mono text-xs font-bold text-primary">
           <span>⚡ What Makes My Architecture Unique</span>
         </div>
-        <p className="text-xs text-[#e6edf3] leading-relaxed">
-          Rare dual-domain expertise integrating <strong className="text-[#2ea043]">high-concurrency enterprise microservices</strong> (ASP.NET Core, Django, Express) with <strong className="text-[#2ea043]">real-time autonomous defense hardware protocols</strong> (MAVLink, WebSockets, Pixhawk, Kalman Filters).
+        <p className="text-xs text-foreground/90 leading-relaxed">
+          Rare dual-domain expertise integrating <strong className="text-primary">high-concurrency enterprise microservices</strong> (ASP.NET Core, Django, Express) with <strong className="text-primary">real-time autonomous defense hardware protocols</strong> (MAVLink, WebSockets, Pixhawk, Kalman Filters).
         </p>
       </div>
 
       {/* Stats Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-        <div className="bg-[#0d1117]/80 backdrop-blur-sm rounded-lg p-3 border border-[#30363d] hover:border-[#2ea043]/50 transition-all">
-          <div className="text-xl font-mono font-bold text-[#2ea043] mb-0.5">&lt;100ms</div>
-          <div className="text-[10px] font-mono text-[#8b949e]">Telemetry Latency</div>
+        <div className="bg-background/80 backdrop-blur-sm rounded-lg p-3 border border-border hover:border-primary/50 transition-all">
+          <div className="text-xl font-mono font-bold text-primary mb-0.5">{PROFILE_DATA.metrics.telemetryLatency}</div>
+          <div className="text-[10px] font-mono text-muted-foreground">Telemetry Latency</div>
         </div>
         
-        <div className="bg-[#0d1117]/80 backdrop-blur-sm rounded-lg p-3 border border-[#30363d] hover:border-[#2ea043]/50 transition-all">
-          <div className="text-xl font-mono font-bold text-[#2ea043] mb-0.5">100k+</div>
-          <div className="text-[10px] font-mono text-[#8b949e]">Daily Transactions</div>
+        <div className="bg-background/80 backdrop-blur-sm rounded-lg p-3 border border-border hover:border-primary/50 transition-all">
+          <div className="text-xl font-mono font-bold text-primary mb-0.5">{PROFILE_DATA.metrics.dailyTransactions}</div>
+          <div className="text-[10px] font-mono text-muted-foreground">Daily Transactions</div>
         </div>
         
-        <div className="bg-[#0d1117]/80 backdrop-blur-sm rounded-lg p-3 border border-[#30363d] hover:border-[#2ea043]/50 transition-all">
-          <div className="text-xl font-mono font-bold text-[#2ea043] mb-0.5">IJASS</div>
-          <div className="text-[10px] font-mono text-[#8b949e]">Published Author</div>
+        <div className="bg-background/80 backdrop-blur-sm rounded-lg p-3 border border-border hover:border-primary/50 transition-all">
+          <div className="text-xl font-mono font-bold text-primary mb-0.5">{PROFILE_DATA.metrics.productionUptime}</div>
+          <div className="text-[10px] font-mono text-muted-foreground">Production Uptime</div>
         </div>
         
-        <div className="bg-[#0d1117]/80 backdrop-blur-sm rounded-lg p-3 border border-[#30363d] hover:border-[#2ea043]/50 transition-all">
-          <div className="text-xl font-mono font-bold text-[#2ea043] mb-0.5">8.2 / 10</div>
-          <div className="text-[10px] font-mono text-[#8b949e]">M.Tech Defence Tech</div>
+        <div className="bg-background/80 backdrop-blur-sm rounded-lg p-3 border border-border hover:border-primary/50 transition-all">
+          <div className="text-xl font-mono font-bold text-primary mb-0.5">8.1 / 10</div>
+          <div className="text-[10px] font-mono text-muted-foreground">M.Tech Defence Tech</div>
         </div>
 
-        <div className="bg-[#0d1117]/80 backdrop-blur-sm rounded-lg p-3 border border-[#30363d] hover:border-[#2ea043]/50 transition-all">
-          <div className="text-xl font-mono font-bold text-[#2ea043] mb-0.5">&gt;90%</div>
-          <div className="text-[10px] font-mono text-[#8b949e]">Ops Overhead Cut</div>
+        <div className="bg-background/80 backdrop-blur-sm rounded-lg p-3 border border-border hover:border-primary/50 transition-all">
+          <div className="text-xl font-mono font-bold text-primary mb-0.5">{PROFILE_DATA.metrics.queryOptimization}</div>
+          <div className="text-[10px] font-mono text-muted-foreground">DB Query Speedup</div>
         </div>
 
-        <div className="bg-[#0d1117]/80 backdrop-blur-sm rounded-lg p-3 border border-[#30363d] hover:border-[#2ea043]/50 transition-all">
-          <div className="text-xl font-mono font-bold text-[#2ea043] mb-0.5">-25%</div>
-          <div className="text-[10px] font-mono text-[#8b949e]">DB Query Load</div>
+        <div className="bg-background/80 backdrop-blur-sm rounded-lg p-3 border border-border hover:border-primary/50 transition-all">
+          <div className="text-xl font-mono font-bold text-primary mb-0.5">IJASS</div>
+          <div className="text-[10px] font-mono text-muted-foreground">Published Author</div>
         </div>
       </div>
 
       {/* Social Icons */}
       <div>
-        <h4 className="text-[11px] font-mono uppercase tracking-wider text-[#8b949e] mb-3 text-center">// Connect &amp; Verify</h4>
+        <h4 className="text-[11px] font-mono uppercase tracking-wider text-muted-foreground mb-3 text-center">Connect &amp; Verify</h4>
         <div className="flex flex-wrap justify-center gap-2.5">
-          <a href="https://github.com/kartheeswaranAR" target="_blank" rel="noopener noreferrer" title="GitHub" className="p-2.5 bg-[#0d1117]/80 border border-[#30363d] rounded-lg text-[#e6edf3] hover:text-[#2ea043] hover:border-[#2ea043] transition shadow-md">
-            <Github className="w-4 h-4 text-[#2ea043]" />
+          <a href={PROFILE_DATA.github} target="_blank" rel="noopener noreferrer" title="GitHub" className="p-2.5 bg-background/80 border border-border rounded-lg text-foreground hover:text-primary hover:border-primary transition shadow-sm">
+            <Github className="w-4 h-4 text-primary" />
           </a>
-          <a href="https://www.linkedin.com/in/kartheeswaranr/" target="_blank" rel="noopener noreferrer" title="LinkedIn" className="p-2.5 bg-[#0d1117]/80 border border-[#30363d] rounded-lg text-[#e6edf3] hover:text-[#2ea043] hover:border-[#2ea043] transition shadow-md">
-            <Linkedin className="w-4 h-4 text-[#2ea043]" />
+          <a href={PROFILE_DATA.linkedin} target="_blank" rel="noopener noreferrer" title="LinkedIn" className="p-2.5 bg-background/80 border border-border rounded-lg text-foreground hover:text-primary hover:border-primary transition shadow-sm">
+            <Linkedin className="w-4 h-4 text-primary" />
           </a>
-          <a href="mailto:kartheeswaran.dev@outlook.com" title="Email" className="p-2.5 bg-[#0d1117]/80 border border-[#30363d] rounded-lg text-[#e6edf3] hover:text-[#2ea043] hover:border-[#2ea043] transition shadow-md">
-            <Mail className="w-4 h-4 text-[#2ea043]" />
+          <a href={`mailto:${PROFILE_DATA.email}`} title="Email" className="p-2.5 bg-background/80 border border-border rounded-lg text-foreground hover:text-primary hover:border-primary transition shadow-sm">
+            <Mail className="w-4 h-4 text-primary" />
           </a>
-          <a href="https://x.com/Karthees_offcl" target="_blank" rel="noopener noreferrer" title="X (Twitter)" className="py-2.5 px-3 bg-[#0d1117]/80 border border-[#30363d] rounded-lg text-[#e6edf3] hover:text-[#2ea043] hover:border-[#2ea043] transition font-mono font-bold text-xs shadow-md">
+          <a href={PROFILE_DATA.x} target="_blank" rel="noopener noreferrer" title="X (Twitter)" className="py-2.5 px-3 bg-background/80 border border-border rounded-lg text-foreground hover:text-primary hover:border-primary transition font-mono font-bold text-xs shadow-sm">
             X
           </a>
-          <a href="https://dev.to/kartheeswaran1921" target="_blank" rel="noopener noreferrer" title="Dev.to" className="py-2.5 px-3 bg-[#0d1117]/80 border border-[#30363d] rounded-lg text-[#e6edf3] hover:text-[#2ea043] hover:border-[#2ea043] transition font-mono font-bold text-xs shadow-md">
+          <a href={PROFILE_DATA.devto} target="_blank" rel="noopener noreferrer" title="Dev.to" className="py-2.5 px-3 bg-background/80 border border-border rounded-lg text-foreground hover:text-primary hover:border-primary transition font-mono font-bold text-xs shadow-sm">
             DEV
           </a>
-          <a href="https://medium.com/@kartheeswaranoff" target="_blank" rel="noopener noreferrer" title="Medium" className="py-2.5 px-3 bg-[#0d1117]/80 border border-[#30363d] rounded-lg text-[#e6edf3] hover:text-[#2ea043] hover:border-[#2ea043] transition font-mono font-bold text-xs shadow-md">
+          <a href={PROFILE_DATA.medium} target="_blank" rel="noopener noreferrer" title="Medium" className="py-2.5 px-3 bg-background/80 border border-border rounded-lg text-foreground hover:text-primary hover:border-primary transition font-mono font-bold text-xs shadow-sm">
             M
           </a>
-          <a href="https://www.instagram.com/yurs_ark/" target="_blank" rel="noopener noreferrer" title="Instagram" className="py-2.5 px-3 bg-[#0d1117]/80 border border-[#30363d] rounded-lg text-[#e6edf3] hover:text-[#2ea043] hover:border-[#2ea043] transition font-mono font-bold text-xs shadow-md">
+          <a href={PROFILE_DATA.instagram} target="_blank" rel="noopener noreferrer" title="Instagram" className="py-2.5 px-3 bg-background/80 border border-border rounded-lg text-foreground hover:text-primary hover:border-primary transition font-mono font-bold text-xs shadow-sm">
             IG
           </a>
         </div>
@@ -223,8 +167,8 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="form-container shadow-xl">
-      <h2 className="text-xl font-bold text-[#e6edf3] mb-2">// Direct Communication</h2>
+    <div className="form-container shadow-md">
+      <h2 className="text-xl font-bold text-foreground mb-2 font-mono">Direct Communication</h2>
       <form onSubmit={handleSubmit} className="form">
         <div className="flex gap-4">
           <div className="form-group flex-1">
@@ -273,10 +217,10 @@ const ContactForm = () => {
                 key={type}
                 type="button"
                 onClick={() => setFormData(prev => ({ ...prev, collaborationType: type }))}
-                className={`flex-1 py-2.5 px-3 rounded-lg border font-mono text-xs transition-all duration-300 ${
+                className={`flex-1 py-2.5 px-3 rounded-lg border font-mono text-xs transition-all duration-300 cursor-pointer ${
                   formData.collaborationType === type
-                    ? 'bg-[#2ea043]/20 border-[#2ea043] text-[#e6edf3]'
-                    : 'bg-[#0d1117]/80 border-[#30363d] text-[#8b949e] hover:border-[#2ea043] hover:text-[#e6edf3]'
+                    ? 'bg-primary/20 border-primary text-foreground font-semibold'
+                    : 'bg-background/80 border-border text-muted-foreground hover:border-primary hover:text-foreground'
                 }`}
               >
                 {type}
@@ -299,7 +243,7 @@ const ContactForm = () => {
         
         {submitStatus.type && (
           <div className={`p-3 rounded-lg font-mono text-xs ${
-            submitStatus.type === 'success' ? 'bg-[#2ea043]/20 text-[#2ea043] border border-[#2ea043]/40' : 'bg-red-500/20 text-red-400 border border-red-500/40'
+            submitStatus.type === 'success' ? 'bg-primary/15 text-primary border border-primary/30' : 'bg-destructive/15 text-destructive border border-destructive/30'
           }`}>
             {submitStatus.message}
           </div>
@@ -308,9 +252,9 @@ const ContactForm = () => {
         <button 
           type="submit" 
           disabled={isSubmitting}
-          className="w-full py-3 px-4 rounded-lg bg-[#0d1117]/90 border border-[#30363d] hover:border-[#2ea043] text-xs font-mono text-[#e6edf3] hover:text-[#2ea043] transition-all flex items-center justify-center gap-2 shadow-md cursor-pointer"
+          className="w-full py-3 px-4 rounded-lg bg-primary hover:bg-primary/90 text-xs font-mono text-primary-foreground font-semibold transition-all flex items-center justify-center gap-2 shadow-md cursor-pointer"
         >
-          {isSubmitting ? 'Transmitting...' : 'Send Message'} <Send size={14} className="text-[#2ea043]" />
+          {isSubmitting ? 'Transmitting...' : 'Send Message'} <Send size={14} />
         </button>
       </form>
     </div>
@@ -321,10 +265,13 @@ const Contact = () => {
   return (
     <section id="contact" className="section-container">
       <div className="text-center mb-12">
-        <h2 className="section-title">Let's connect</h2>
-          </div>
+        <h2 className="section-title">Let's Connect</h2>
+        <p className="text-sm text-muted-foreground max-w-xl mx-auto">
+          Have an engineering challenge, backend architecture opportunity, or UAV systems project? Let's talk.
+        </p>
+      </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-        {/* Left: Developer Stats, Contact Methods, Coding Platforms */}
+        {/* Left: Developer Stats & Systems Overview */}
         <DeveloperStats />
         {/* Right: Contact Form */}
         <ContactForm />

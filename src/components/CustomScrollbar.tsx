@@ -20,15 +20,15 @@ const CustomScrollbar = () => {
         width: 6px;
       }
       ::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.05);
+        background: transparent;
       }
       ::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.2);
+        background: rgba(120, 120, 120, 0.25);
         border-radius: 3px;
         transition: all 0.3s ease;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: rgba(255, 255, 255, 0.3);
+        background: rgba(46, 160, 67, 0.6);
       }
     `;
     document.head.appendChild(style);
@@ -41,10 +41,10 @@ const CustomScrollbar = () => {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 origin-left z-[60]"
+      className="fixed top-0 left-0 right-0 h-[3px] bg-primary origin-left z-[60]"
       style={{ scaleX }}
     />
   );
 };
 
-export default CustomScrollbar; 
+export default CustomScrollbar;

@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-
 import { TECH_GROUPS } from '@/data/portfolioData';
 
 const containerVariants = {
@@ -42,20 +41,21 @@ const Technologies = () => {
         className="text-center mb-12"
       >
         <h2 className="section-title">
-          Core Architecture & Tech Stack
+          Core Architecture &amp; Tech Stack
         </h2>
-        <p className="text-sm sm:text-base text-[#8b949e] max-w-2xl mx-auto">
+        <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
           High-performance distributed systems, real-time defense protocols, and enterprise cloud technologies
         </p>
       </motion.div>
+
       <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {TECH_GROUPS.map((group) => (
           <div 
             key={group.label} 
-            className="flex flex-col items-center h-full bg-[#161b22]/75 backdrop-blur-md p-6 rounded-xl border border-[#30363d] hover:border-[#2ea043]/50 transition-all shadow-xl hover:shadow-[0_0_20px_rgba(46,160,67,0.12)]"
+            className="flex flex-col items-center h-full bg-card/85 backdrop-blur-md p-6 rounded-xl border border-border hover:border-primary/50 transition-all shadow-md hover:shadow-lg"
           >
-            <h3 className="font-mono text-xs font-semibold uppercase tracking-wider text-[#2ea043] mb-6 text-center">
-              // {group.label}
+            <h3 className="font-mono text-xs font-semibold uppercase tracking-wider text-primary mb-6 text-center">
+              {group.label}
             </h3>
             <motion.div
               className="grid grid-cols-2 gap-4 w-full"
@@ -70,7 +70,7 @@ const Technologies = () => {
                   href={tech.docs}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-col items-center group no-underline p-2 rounded-lg hover:bg-[#0d1117]/40 transition-colors"
+                  className="flex flex-col items-center group no-underline p-2 rounded-lg hover:bg-muted/50 transition-colors"
                   variants={itemVariants}
                   whileHover={{ 
                     scale: 1.05,
@@ -78,8 +78,8 @@ const Technologies = () => {
                   }}
                   whileTap={{ scale: 0.96 }}
                 >
-                  <div className="relative p-2 rounded-lg bg-[#0d1117]/80 backdrop-blur-sm border border-[#30363d] group-hover:border-[#2ea043]/80 shadow-md group-hover:shadow-[0_0_18px_rgba(46,160,67,0.3)] transition-all duration-300 w-14 h-14 flex items-center justify-center">
-                    <div className="absolute inset-0 bg-[#2ea043]/20 rounded-lg blur-md opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                  <div className="relative p-2 rounded-lg bg-background/80 backdrop-blur-sm border border-border group-hover:border-primary shadow-sm group-hover:shadow-[0_0_18px_rgba(46,160,67,0.3)] transition-all duration-300 w-14 h-14 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-primary/20 rounded-lg blur-md opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
                     {!imageErrors[tech.name] ? (
                       <motion.img 
                         src={tech.icon} 
@@ -90,13 +90,13 @@ const Technologies = () => {
                         onError={() => handleImageError(tech.name)}
                       />
                     ) : (
-                      <div className="w-8 h-8 flex items-center justify-center border border-[#2ea043]/40 rounded bg-[#0d1117] text-[#2ea043] font-mono font-bold text-[10px] text-center z-10">
+                      <div className="w-8 h-8 flex items-center justify-center border border-primary/40 rounded bg-background text-primary font-mono font-bold text-[10px] text-center z-10">
                         {tech.name.substring(0, 3)}
                       </div>
                     )}
                   </div>
                   <motion.span 
-                    className="mt-2 font-mono text-[11px] font-medium text-[#8b949e] group-hover:text-[#2ea043] transition-colors duration-300 text-center leading-tight"
+                    className="mt-2 font-mono text-[11px] font-medium text-muted-foreground group-hover:text-primary transition-colors duration-300 text-center leading-tight"
                   >
                     {tech.name}
                   </motion.span>

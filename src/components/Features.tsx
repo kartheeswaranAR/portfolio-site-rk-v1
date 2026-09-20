@@ -13,7 +13,7 @@ const Features = () => {
         className="text-center mb-10"
       >
         <h2 className="section-title">Core Capabilities</h2>
-        <p className="text-sm sm:text-base text-[#8b949e] max-w-2xl mx-auto">
+        <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
           Domain expertise spanning sub-100ms hardware telemetry, high-concurrency cloud microservices, and autonomous control systems.
         </p>
       </motion.div>
